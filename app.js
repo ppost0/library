@@ -5,6 +5,8 @@ const libraryDisplay = document.querySelector('.library-display')
 const newBookButton = document.querySelector('.new-book-button');
 const hidden = document.querySelector('.hidden');
 const closeButton = document.querySelector('.close-button');
+const addButton = document.querySelector('.add-button');
+
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -51,9 +53,27 @@ function displayBooks() {
   }
 }
 
+
+
+function getBookFromInput() {
+  const title = document.querySelector('.title').value;
+  const author = document.querySelector('.author').value;
+  const pages = document.querySelector('.pages').value;
+  const read = document.querySelector('.read').value;
+
+  const currentBook = new Book(title, author, pages, read);
+
+  addBookToLibrary(currentBook);
+
+  displayBooks();
+}
+
+
+
 function showForm() {
   hidden.style.display = 'flex';
 }
+
 
 function hideForm() {
   hidden.style.display = 'none';
@@ -62,6 +82,7 @@ function hideForm() {
 
 newBookButton.addEventListener('click', () => showForm());
 closeButton.addEventListener('click', () => hideForm());
+addButton.addEventListener('click', () => getBookFromInput());
 
 
 
@@ -69,7 +90,7 @@ closeButton.addEventListener('click', () => hideForm());
 
 
 
-const book1 = new Book('The Man', 'Patrick Post', 1000, 'not read yet');
+const book1 = new Book('The Man', 'Patrick Post', 1000, 'Not read yet');
 const book2 = new Book('How to Excel in Math', 'Sebastian Gonzalez', 387, 'completed');
 const book3 = new Book('Designing the Gigafiladextron', 'Marc Allen', 621, 'completed');
 const book4 = new Book('The State of Overwatch 2', 'Luis Laca', 420, 'completed');
