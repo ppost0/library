@@ -77,6 +77,8 @@ function showForm() {
 
 function hideForm() {
   hidden.style.display = 'none';
+  const form = document.querySelector('.form')
+  form.reset();
 }
 
 

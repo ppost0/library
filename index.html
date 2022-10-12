@@ -28,11 +28,11 @@
   </table>
 
   <div class="hidden">
-    <form action="" method="post">
+    <form class="form" action="" method="post">
       <button type="button" class="close-button btn">&times;</button>
-      <input class="title" placeholder="Title" type="text" id="title">
-      <input class="author" placeholder="Author" type="text" id="author">
-      <input class="pages" placeholder="Pages" type="text" id="pages">
+      <input maxlength="200" class="title" placeholder="Title" type="text" id="title">
+      <input maxlength="50" class="author" placeholder="Author" type="text" id="author">
+      <input class="pages" placeholder="Pages" type="number" id="pages">
       <select class="read" name="Read?" id="read">
         <option value="not read yet">Not read yet</option>
         <option value="completed">Completed</option>
