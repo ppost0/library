@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Library</title>
+</head>
+<body>
+
+
+
+
+<div class="main-content">
+  <h1>My Library</h1>
+
+  <button class="new-book-button btn">Add a book</button>
+
+  <table class="library-display">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Pages</th>
+      <th>Read?</th>
+    </tr>
+  </table>
+
+  <div class="hidden">
+    <form action="" method="post">
+      <button type="button" class="close-button btn">&times;</button>
+      <input placeholder="Title" type="text" id="title">
+      <input placeholder="Author" type="text" id="author">
+      <input placeholder="Pages" type="text" id="pages">
+      <select name="Read?" id="read">
+        <option value="not read yet">Not read yet</option>
+        <option value="completed">Completed</option>
+      </select>
+      <button class="add-button btn">Add</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
