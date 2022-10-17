@@ -15,6 +15,14 @@ function Book(title, author, pages, read) {
   this.read = read;
   this.info = function() {
     return `${title} by ${author}, ${pages} pages, ${read}.`;
+  };
+  this.toggleStatus = function() {
+    if (this.read === 'Completed') {
+      this.read = 'Not read yet';
+    } else {
+      this.read = 'Completed';
+    }
+    displayBooks();
   }
 }
 
@@ -22,6 +30,28 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(newBook) {
   myLibrary.push(newBook);
 }
+
+function removeEntry(e) {
+  let current = e.target;
+  let parentEntry = current.parentNode;
+  let grandparentEntry = parentEntry.parentNode;
+
+  myLibrary = myLibrary.filter(function(value) {
+    return value.title !== grandparentEntry.firstChild.textContent;
+  })
+
+  grandparentEntry.remove();
+}
+
+
+function linkBook(e) {
+  let current = e.target;
+  let parent = current.parentNode;
+  let grandparent = parent.parentNode;
+  let greatgrandparent = grandparent.parentNode;
+  myLibrary[greatgrandparent.dataset.n].toggleStatus();
+}
+
 
 
 function displayBooks() {
@@ -31,24 +61,41 @@ function displayBooks() {
     <th>Author</th>
     <th>Pages</th>
     <th>Read?</th>
+    <th></th>
   </tr>`
 
   for (let i = 0; i < myLibrary.length; i++) {
     const newEntry = document.createElement('tr');
+    newEntry.dataset.n = document.querySelector('.library-display').childNodes.length - 2;
     const newEntryTitle = document.createElement('td');
     const newEntryAuthor = document.createElement('td');
     const newEntryPages = document.createElement('td');
     const newEntryRead = document.createElement('td');
+    const buttonArea = document.createElement('td')
+    const removeButton = document.createElement('button');
+    const toggleButton = document.createElement('button');
+    const box = document.createElement('div');
 
     newEntryTitle.textContent = myLibrary[i].title;
     newEntryAuthor.textContent = myLibrary[i].author;
     newEntryPages.textContent = myLibrary[i].pages;
     newEntryRead.textContent = myLibrary[i].read;
+    removeButton.textContent = "Remove";
+    removeButton.classList.add("removeBtns");
+    toggleButton.classList.add("toggleBtns");
+    toggleButton.textContent = "Change progress";
+
+    removeButton.addEventListener('click', (e) => removeEntry(e));
+    toggleButton.addEventListener('click', (e) => linkBook(e));
 
     newEntry.appendChild(newEntryTitle);
     newEntry.appendChild(newEntryAuthor);
     newEntry.appendChild(newEntryPages);
+    box.appendChild(toggleButton)
+    newEntryRead.appendChild(box);
     newEntry.appendChild(newEntryRead);
+    newEntry.appendChild(buttonArea);
+    buttonArea.appendChild(removeButton);
     libraryDisplay.appendChild(newEntry);
   }
 }
@@ -63,7 +110,9 @@ function getBookFromInput() {
 
   const currentBook = new Book(title, author, pages, read);
 
-  addBookToLibrary(currentBook);
+  if (title.length > 0) {
+    addBookToLibrary(currentBook);
+  };
 
   displayBooks();
 }
@@ -93,9 +142,9 @@ addButton.addEventListener('click', () => getBookFromInput());
 
 
 const book1 = new Book('The Man', 'Patrick Post', 1000, 'Not read yet');
-const book2 = new Book('How to Excel in Math', 'Sebastian Gonzalez', 387, 'completed');
-const book3 = new Book('Designing the Gigafiladextron', 'Marc Allen', 621, 'completed');
-const book4 = new Book('The State of Overwatch 2', 'Luis Laca', 420, 'completed');
+const book2 = new Book('How to Excel in Math', 'Sebastian Gonzalez', 387, 'Completed');
+const book3 = new Book('Designing the Gigafiladextron', 'Marc Allen', 621, 'Completed');
+const book4 = new Book('The State of Overwatch 2', 'Luis Laca', 420, 'Completed');
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);

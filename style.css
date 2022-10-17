@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -355,7 +357,8 @@ template {
 
 
 h1 {
-  color:rgb(71, 71, 202)
+  color:rgb(71, 71, 202);
+  font-size: 50px;
 }
 
 table {
@@ -364,6 +367,13 @@ table {
 
 td {
   padding: 0 20px;
+}
+
+.new-book-button {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 700;
+  border-color: rgb(42, 44, 165);
 }
 
 form *{
@@ -405,13 +415,24 @@ form {
   margin-top: 30px;
 }
 
+.removeBtns {
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border-color: rgb(214, 214, 214);
+}
+
+.toggleBtns {
+  font-size: 10px;
+  margin-top: 10px;
+}
+
 
 /* ============================================================================= */
 
 
 html {
-  font-family: sans-serif;
-}
+  font-family: 'Quicksand', sans-serif;}
 
 table {
   border-collapse: collapse;
