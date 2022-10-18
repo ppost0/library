@@ -383,7 +383,7 @@ form *{
 form {
   border-radius: 10px;
   position: fixed;
-  top: 200px;
+  top: 250px;
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 237, 204);
