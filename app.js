@@ -8,15 +8,19 @@ const closeButton = document.querySelector('.close-button');
 const addButton = document.querySelector('.add-button');
 
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function() {
-    return `${title} by ${author}, ${pages} pages, ${read}.`;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}.`;
   };
-  this.toggleStatus = function() {
+
+  toggleStatus() {
     if (this.read === 'Completed') {
       this.read = 'Not read yet';
     } else {
@@ -24,6 +28,7 @@ function Book(title, author, pages, read) {
     }
     displayBooks();
   }
+
 }
 
 
